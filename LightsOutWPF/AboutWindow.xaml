@@ -7,8 +7,9 @@
         mc:Ignorable="d"
         Title="About" Height="187.406" Width="300" ResizeMode="NoResize">
     <Canvas HorizontalAlignment="Left" Height="142" Margin="10,10,-6,0" VerticalAlignment="Top" Width="290">
-        <Label Content="Lights Out! is a game where you &#xD;&#xA;attempt you turn all of the &quot;lights&quot; &#xD;&#xA;off (Black) to win the game! " Canvas.Left="86" Canvas.Top="19" Height="65" Width="201"/>
-        <Image Height="81" Canvas.Top="19" Width="81"/>
+        <Label Content="Lights Out! is a game where you &#xD;&#xA;attempt you turn all of the &quot;lights&quot; &#xD;&#xA;off (Black) to win the game! " Canvas.Left="86" Canvas.Top="16" Height="65" Width="201"/>
+        <Image Height="81" Canvas.Top="10" Width="81" Source="images.png"/>
         <Button Content="OK" Canvas.Left="97" Canvas.Top="112" Width="75" Click="Button_Click"/>
+        <Label Content="By: Christian Ellison&#xD;&#xA;" Canvas.Left="3" Canvas.Top="96" FontSize="8"/>
     </Canvas>
 </Window>
