@@ -5,8 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LightsOutWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Lights Out!" Height="619.018" Width="543.479">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="260*"/>
+            <ColumnDefinition Width="6*"/>
+            <ColumnDefinition Width="259*"/>
+        </Grid.ColumnDefinitions>
+        <Canvas Margin="10,44,0,0" Grid.ColumnSpan="3" Name="boardCanvas" Height="415" VerticalAlignment="Top" HorizontalAlignment="Left" Width="505"/>
+        <Menu Height="29" VerticalAlignment="Top" Grid.ColumnSpan="3" Margin="10,10,255,0">
+            <MenuItem Header="_Game">
+                <MenuItem Header="_New" ToolTip="Starts a new game" Name="NewMenuItem" Click="NewGame_Click"></MenuItem>
+                <Separator></Separator>
+                <MenuItem Header="E_xit" ToolTip="Exits the application" Click="Exit_Click" Name="ExitMenuItem"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="_Help">
+                <MenuItem Header="_About" ToolTip="About the application" Click="MenuItem_Click" Name="AboutMenuItem"></MenuItem>
+            </MenuItem>
+        </Menu>
+        <Button Content="New Game" Grid.Column="2" Margin="174,558,0,0" Click="NewGame_Click" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="75"/>
+        <Button Content="Exit" Margin="0,558,175,0" Click="Exit_Click" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75"/>
     </Grid>
 </Window>
