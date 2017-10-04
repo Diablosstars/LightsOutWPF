@@ -27,6 +27,7 @@ namespace LightsOutWPF
             game = new LightsOutGame();
             CreateGrid();
             DrawGrid();
+            
         }
 
         private void CreateGrid()
@@ -90,29 +91,34 @@ namespace LightsOutWPF
                 }
             }
         }
-        private void MenuExit_Click()
+
+        //https://stackoverflow.com/questions/1761854/cant-drag-and-move-a-wpf-form
+        //    -- user278295
+        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
         {
-            Close();
+            base.OnMouseLeftButtonDown(e);
+
+            // Begin dragging the window
+            this.DragMove();
         }
 
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        private void HelpCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            if(sender == AboutMenuItem)
-            {
-                AboutWindow aboutForm = new AboutWindow();
-                aboutForm.ShowDialog();
-            }
+            AboutWindow aboutForm = new AboutWindow();
+            aboutForm.ShowDialog();
         }
-
-        private void Exit_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
-
-        private void NewGame_Click(object sender, RoutedEventArgs e)
+        private void NewCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             game.NewGame();
             DrawGrid();
+        }
+        private void CloseCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+        private void CloseCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = false;     
         }
     }
 }

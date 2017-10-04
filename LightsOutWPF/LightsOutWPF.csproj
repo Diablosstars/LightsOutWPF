@@ -110,5 +110,8 @@
   <ItemGroup>
     <Resource Include="bulb.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Bulb2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

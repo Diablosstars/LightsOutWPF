@@ -5,25 +5,52 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LightsOutWPF"
         mc:Ignorable="d"
-        Title="Lights Out!" Height="619.018" Width="543.479" ResizeMode="NoResize">
+        Title="Lights Out!" Height="619.018" Width="543.479" AllowsTransparency="True" WindowStyle="None">
+    <Window.Background>
+        <ImageBrush ImageSource="Bulb2.png"></ImageBrush>
+    </Window.Background>
+    <Window.CommandBindings>
+        <CommandBinding Command="Help" Executed="HelpCommand_Executed"/>
+        <CommandBinding Command="New" Executed="NewCommand_Executed"/>
+        <CommandBinding Command="Close" Executed="CloseCommand_Executed" CanExecute="CloseCommand_CanExecute"/>
+    </Window.CommandBindings>
+    <Window.Resources>
+        <ControlTemplate x:Key="Style2" TargetType="Button">
+            <Border Name="Border" BorderThickness="2" CornerRadius="10"
+                BorderBrush="BlueViolet">
+                <ContentPresenter HorizontalAlignment="Center" TextBlock.Foreground="Blue"
+                VerticalAlignment="Center" TextBlock.FontWeight="Bold"  
+                 Content="{TemplateBinding Content}" />
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="Button.IsMouseOver" Value="True">
+                    <Setter TargetName="Border" Property="BorderBrush" Value="Black"/>
+                    <Setter Property="Button.Opacity" Value=".5"/>
+                </Trigger>
+                <Trigger Property="Button.IsPressed" Value="True">
+                    <Setter TargetName="Border" Property="BorderBrush" Value="#FFF3FF00"/>
+                    <Setter TargetName="Border" Property="CornerRadius" Value="2"/>
+                    <Setter Property="Button.Opacity" Value="1"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="260*"/>
-            <ColumnDefinition Width="6*"/>
-            <ColumnDefinition Width="259*"/>
         </Grid.ColumnDefinitions>
-        <Canvas Margin="10,44,0,0" Grid.ColumnSpan="3" Name="boardCanvas" Height="415" VerticalAlignment="Top" HorizontalAlignment="Left" Width="505"/>
-        <Menu Height="29" VerticalAlignment="Top" Grid.ColumnSpan="3" Margin="10,10,255,0">
-            <MenuItem Header="_Game">
-                <MenuItem Header="_New" ToolTip="Starts a new game" Name="NewMenuItem" Click="NewGame_Click"></MenuItem>
-                <Separator></Separator>
-                <MenuItem Header="E_xit" ToolTip="Exits the application" Click="Exit_Click" Name="ExitMenuItem"></MenuItem>
-            </MenuItem>
-            <MenuItem Header="_Help">
-                <MenuItem Header="_About" ToolTip="About the application" Click="MenuItem_Click" Name="AboutMenuItem"></MenuItem>
-            </MenuItem>
-        </Menu>
-        <Button Content="New Game" Grid.Column="2" Margin="174,558,0,0" Click="NewGame_Click" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="75"/>
-        <Button Content="Exit" Margin="0,558,175,0" Click="Exit_Click" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75"/>
+        <Canvas Margin="150,74,0,0" Name="boardCanvas" Height="236" VerticalAlignment="Top" HorizontalAlignment="Left" Width="242" RenderTransformOrigin="0.5,0.5">
+            <Canvas.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.23"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Canvas.RenderTransform>
+        </Canvas>
+        <Button Content="?" Margin="236,512,0,0" Command="Help" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="75" Template="{StaticResource Style2}"/>
+        <Button Content="New Game" Margin="151,512,0,0" Command="New" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="75" Template="{StaticResource Style2}"/>
+        <Button Content="Exit" Margin="0,512,146,0" Command="Close" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" Width="76" Template="{StaticResource Style2}" />
     </Grid>
 </Window>

@@ -11,6 +11,7 @@ namespace LightsOutWPF
         private int numCells = 3;               // Number of cells in grid
         private bool[,] grid;                   // Stores on/off state of cells in grid
         private Random rand;           // Used to generate random numbers
+        public bool gameWon = false;
         // Returns the number of horizontal/vertical cells in the grid
         public int NumCells
         {
@@ -90,6 +91,7 @@ namespace LightsOutWPF
                     }
                 }
             }
+            gameWon = true;
             return true;
         }
     }
